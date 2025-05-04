@@ -7,25 +7,24 @@
     "web": {
       "favicon": "./assets/images/icon.png"
     },
-
     "experiments": {
       "tsconfigPaths": true,
       "newArchEnabled": true
     },
-
-    "plugins": [],
-
+    "plugins": [
+      "expo-web-browser"
+    ],
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-
     "userInterfaceStyle": "light",
-
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
@@ -33,7 +32,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.anonymous.myexpoapp"
     }
   }
 }
