@@ -1,6 +1,5 @@
 import { View, Text, ScrollView, Image, Alert } from "react-native"
 import { images, icons } from "../../constants"
-import { Input } from "postcss";
 import InputField from "components/InputField";
 import { useState } from "react";
 import CustomButton from "components/CustomButton";
@@ -8,6 +7,7 @@ import { Link, router } from "expo-router";
 import OAuth from "components/Oauth";
 import { useSignUp } from "@clerk/clerk-expo";
 import ReactNativeModal from 'react-native-modal';
+import { fetchAPI } from "lib/fetch";
 
 const Sign_up = () => {
 
@@ -58,6 +58,15 @@ const Sign_up = () => {
 
       if (signUpAttempt.status === 'complete') {
         //TODO
+        await fetchAPI('/(api)/user',{
+          method:"POST",
+          body:JSON.stringify({
+            name: form.name,
+            email: form.email,
+            clerkId: signUpAttempt.createdUserId,
+
+          }),
+        })
         await setActive({ session: signUpAttempt.createdSessionId })
         setVerification({ ...verification, state: 'success' });
       } else {
@@ -144,7 +153,7 @@ const Sign_up = () => {
               Авторизован
             </Text>
             <Text className="text-base text-grey-200 font-Jakarta text-center mt-2"> Ваш аккаунт успешно авторизован</Text>
-            <CustomButton title="Вернуться на главную" onPress={() => router.replace('/(root)/(tabs)/home')} className="mt-5"/>
+            <CustomButton title="Вернуться на главную" onPress={() =>{setshowSuccessModal(false); router.push('/(root)/(tabs)/home')}} className="mt-5"/>
           </View>
         </ReactNativeModal>
       </View>

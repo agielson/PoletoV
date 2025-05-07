@@ -1,10 +1,13 @@
 {
   "expo": {
-    "name": "my-expo-app",
-    "slug": "my-expo-app",
+    "name": "PoletoV",
+    "slug": "PoletoV",
     "version": "1.0.0",
     "scheme": "myapp",
+  
     "web": {
+      "bundler":"metro",
+      "output":"server",
       "favicon": "./assets/images/icon.png"
     },
     "experiments": {
@@ -20,7 +23,7 @@
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#2f80ed"
     },
     "assetBundlePatterns": [
       "**/*"
